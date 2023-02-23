@@ -1,12 +1,14 @@
 package com.example.core.member;
 
+import com.example.core.AppConfig;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
-    private final MemberService memberService = new MemberServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    private MemberService memberService = appConfig.memberService();
 
 
     @Test

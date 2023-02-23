@@ -1,0 +1,29 @@
+package com.example.core;
+
+import com.example.core.discount.DiscountPolicy;
+import com.example.core.discount.FixedRatePolicy;
+import com.example.core.member.MemberRepository;
+import com.example.core.member.MemberService;
+import com.example.core.member.MemberServiceImpl;
+import com.example.core.member.MemoryMemberRepository;
+import com.example.core.order.OrderService;
+import com.example.core.order.OrderServiceImpl;
+
+public class AppConfig {
+    public MemberService memberService() {
+        return new MemberServiceImpl(memberRepository());
+    }
+
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    public OrderService orderService() {
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+
+    public DiscountPolicy discountPolicy() {
+        return new FixedRatePolicy();
+    }
+}
+//설계정보가 config구성정보에 그대로 담겨져있음

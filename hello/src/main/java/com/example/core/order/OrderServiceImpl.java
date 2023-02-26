@@ -5,14 +5,17 @@ import com.example.core.discount.DiscountPolicy;
 import com.example.core.discount.FixDiscountPolicy;
 import com.example.core.discount.FixedRatePolicy;
 import com.example.core.member.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
-    AppConfig appConfig = new AppConfig();
 
     private final MemberRepository memberRepository;
 
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
@@ -25,5 +28,9 @@ public class OrderServiceImpl implements OrderService {
         int discount = discountPolicy.discount(member, itemPrice);
 
         return new Order(memberId, itemName, itemPrice, discount);
+    }
+
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }

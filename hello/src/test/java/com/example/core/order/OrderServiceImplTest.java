@@ -6,13 +6,19 @@ import com.example.core.discount.FixDiscountPolicy;
 import com.example.core.member.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class OrderServiceImplTest {
     AppConfig appConfig = new AppConfig();
+
     MemberService memberService = appConfig.memberService();
+
     OrderService orderService = appConfig.orderService();
     private final int price = 20000;
 

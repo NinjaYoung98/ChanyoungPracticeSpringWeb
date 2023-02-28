@@ -11,8 +11,8 @@ import org.springframework.context.annotation.FilterType;
 @Configuration
 @ComponentScan(excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = Configuration.class))
 public class ConflictConfig {
-    @Bean(name = "memoryMemberRepository")
-    public MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository")
+//    public MemberRepository memberRepository(){
+//        return new MemoryMemberRepository();
+//    }
 }
